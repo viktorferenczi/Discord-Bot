@@ -1,1 +1,5 @@
-export const botKey = "";
+module.exports = {
+    getBotPrivateKey: function () {
+        return "";
+    }
+};

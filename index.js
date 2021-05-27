@@ -1,6 +1,6 @@
-import { botKey } from ".env";
+let environment = require('.env.js');
 
-var BlackDesertOnline = require('./bdo/bossTimer');
+let BlackDesertOnline = require('./bdo/bossTimer');
 
 const Discord = require('discord.js');
 const client = new Discord.Client({partials:["REACTION","MESSAGE"],ws:{ intents: ['GUILDS','GUILD_MESSAGES']}});
@@ -20,6 +20,6 @@ client.on("message", msg => {
 	if(msg.content === "test"){msg.reply("kutyi")}
 })
 
-client.login(botKey);
+client.login(environment.getBotPrivateKey);
 
 
