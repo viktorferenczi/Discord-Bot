@@ -1,4 +1,4 @@
-let environment = require('.env.js');
+let environment = require('env.js');
 
 let BlackDesertOnline = require('./bdo/bossTimer');
 
