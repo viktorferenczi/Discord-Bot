@@ -1,25 +1,36 @@
-let environment = require('./env');
-
-let BlackDesertOnline = require('./bdo/bossTimer');
+let environment 				= require('./env');
+let blackDesertOnlineHelper 	= require('./bdo/bossTimer');
+let channelHelper 				= require('./channels/channelList');
+let messageHelper 				= require('./messages/messageList');
+let prefix						= "??";
 
 const Discord = require('discord.js');
-const client = new Discord.Client({partials:["REACTION","MESSAGE"],ws:{ intents: ['GUILDS','GUILD_MESSAGES']}});
+const client = new Discord.Client(
+	{
+		partials: ["REACTION","MESSAGE"],
+		ws: { 
+				intents: ['GUILDS','GUILD_MESSAGES']
+			}
+	});
 
 
-woof = async () => {
-	const channel = await client.channels.fetch('692003934776328282')
-	await channel.send(BlackDesertOnline.getNextBossText())
-}
-
-client.once('ready', () => {
-	woof()
+// startup, welcome message
+client.once('ready', async () => {
+	let message = messageHelper.getWelcomeMessage();
+	let channel = await channelHelper.getTextChannel(client,'sima-text');
+	await channel.send(message);
 });
 
-
+// handle user requests
 client.on("message", msg => {
-	if(msg.content === "test"){msg.reply("kutyi")}
-})
+	switch (msg.content) {
+		case prefix+"nb":
+			msg.reply(blackDesertOnlineHelper.getNextBossText());
+			break;
+		default:
+			break;
+	}
+});
 
-client.login(environment.getBotPrivateKey);
-
-
+// login the bot as a client
+client.login(environment.getBotPrivateKey());

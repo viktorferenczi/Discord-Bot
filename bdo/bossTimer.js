@@ -51,6 +51,6 @@ module.exports = {
         let table = bossTable[n][nextBossTime];
         let getNext = getNextBossTime();
 
-        return "the next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
+        return "The next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
     }
 };
