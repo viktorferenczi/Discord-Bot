@@ -1,7 +1,7 @@
 {
   "name": "DiscordBot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dogvision DC server's discord BOT.",
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.5.3"
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/viktorferenczi/DiscordBot.git"
   },
   "keywords": [],
-  "author": "Viktor Ferebczi",
+  "author": "Viktor Ferenczi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/viktorferenczi/DiscordBot/issues"
