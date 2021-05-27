@@ -45,12 +45,12 @@ getNextBossTime = () => {
     }
 }
 
+module.exports = {
+    getNextBossText: function () {
+        let nextBossTime = getNextBossTime();
+        let table = bossTable[n][nextBossTime];
+        let getNext = getNextBossTime();
 
-getNextBossText = () => {
-    let nextBossTime = getNextBossTime();
-    let table = bossTable[n][nextBossTime];
-    let getNext = getNextBossTime();
-    return "the next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
-}
-
-export const getNextBossText;
+        return "the next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
+    }
+};

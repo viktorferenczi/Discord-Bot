@@ -1,5 +1,6 @@
 import { botKey } from ".env";
-import getNextBossText from "./bdo/bossTimer"
+
+var BlackDesertOnline = require('./bdo/bossTimer');
 
 const Discord = require('discord.js');
 const client = new Discord.Client({partials:["REACTION","MESSAGE"],ws:{ intents: ['GUILDS','GUILD_MESSAGES']}});
@@ -7,7 +8,7 @@ const client = new Discord.Client({partials:["REACTION","MESSAGE"],ws:{ intents:
 
 woof = async () => {
 	const channel = await client.channels.fetch('692003934776328282')
-	await channel.send(getNextBossText())
+	await channel.send(BlackDesertOnline.getNextBossText())
 }
 
 client.once('ready', () => {
