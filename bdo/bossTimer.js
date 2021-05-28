@@ -43,8 +43,7 @@ getNextBossTime = () => {
         let tableTime = 0;
         let listTime = time.split(':');
         tableTime = (parseInt(listTime[0]) * 3600) + (parseInt(listTime[1]) * 60);
-        console.log(now)
-        console.log(tableTime)
+        
         if(now < tableTime) {           
             return time;
         }
@@ -59,6 +58,6 @@ module.exports = {
         let table = bossTable[currentDay][nextBossTime];
         let getNext = getNextBossTime();
 
-        return "The next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
+        return "The next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "CEST!";
     }
 };
