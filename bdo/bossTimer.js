@@ -29,7 +29,7 @@ getCurrentDay = () => {
 getNextBossTime = () => {
 	// now
 	let date = new Date();
-	date.setHours(date.getHours() + 2); //CEST
+	//date.setHours(date.getHours() + 2); //CEST
 	let datetext = date.toTimeString();
 	datetext = datetext.split(' ')[0];
 
@@ -43,7 +43,8 @@ getNextBossTime = () => {
         let tableTime = 0;
         let listTime = time.split(':');
         tableTime = (parseInt(listTime[0]) * 3600) + (parseInt(listTime[1]) * 60);
-
+        console.log(now)
+        console.log(tableTime)
         if(now < tableTime) {           
             return time;
         }
