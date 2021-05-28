@@ -1,17 +1,3 @@
-let today = new Date();
-let n = today.getDay();
-
-if(n != 0){
-    n = today.getDay()-1;
-} else if(n == 0){
-    n = 6;
-}
-
-// now
-let date = new Date();
-let datetext = date.toTimeString();
-datetext = datetext.split(' ')[0];
-
 // timeslist
 let timeList = [ "0:15","2:00", "5:00","9:00","12:00","16:00","19:00","22:15","23:15"];
 
@@ -26,8 +12,27 @@ let bossTable = [
     {"0:15" : "Kutum / Nouver", "2:00" : "Kzarka", "5:00" : "Kutum", "9:00" : "Nouver", "12:00" : "Kzarka", "16:00" : "Vell", "19:00" : "Garmoth", "22:15" : "Kzarka / Nouver", "23:15" : "None"}
 ]
 
+getCurrentDay = () => {
+	let today = new Date();
+	today.setHours(today.getHours() + 2); //CEST
+	let n = today.getDay();
+
+	if(n != 0){
+    		n = today.getDay()-1;
+	} else if(n == 0){
+    		n = 6;
+	}
+	return n;
+}
+
 //nextboss
 getNextBossTime = () => {
+	// now
+	let date = new Date();
+	date.setHours(date.getHours() + 2); //CEST
+	let datetext = date.toTimeString();
+	datetext = datetext.split(' ')[0];
+
     for (let time of timeList) {
         //converting datetext (now) to sec
         let now = 0;
@@ -48,7 +53,9 @@ getNextBossTime = () => {
 module.exports = {
     getNextBossText: function () {
         let nextBossTime = getNextBossTime();
-        let table = bossTable[n][nextBossTime];
+	let currentDay = getCurrentDay();
+
+        let table = bossTable[currentDay][nextBossTime];
         let getNext = getNextBossTime();
 
         return "The next world boss spawn in Black Desert Online(EU) will be: " + table + " at " + getNext + "!";
